@@ -17,14 +17,14 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credenialsId: 'webserver_login', usernameVariable: 'USERNAME' , userpassVariable: 'USERPASS' )]) {
                     sshPublisher(
-                        failOnError: 'true' ,
-                        continueOnError: 'false',
+                        failOnError: true ,
+                        continueOnError: false,
                         publishers: [
                             sshPublisherDesc(
                                 configName: 'staging',
                                 sshCredentials: [
-                                    username: '$USERNAME',
-                                    encryptedPassPhrase: '$USERPASS'
+                                    username: "$USERNAME",
+                                    encryptedPassPhrase: "$USERPASS"
                                     ],
                                transfers: [
                                    sshTransfer(
