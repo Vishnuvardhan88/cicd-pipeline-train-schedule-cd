@@ -13,6 +13,8 @@ pipeline {
             
             when {
                 branch 'master' 
+            }
+            steps {
                 withCredentials([usernamePassword(credenialsId: 'webserver_login', usernameVariable: 'USERNAME' , userpassVariable: 'USERPASS' )]) {
                     sshPublisher(
                         failOnError: 'true' ,
